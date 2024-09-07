@@ -2,9 +2,11 @@
 @import './assets/styles/variables.scss';
 @import './assets/styles/font';
 
-body {
+*, body {
   @extend .inter-regular;
   font-size: 15px;
-  background: var(--hawkes-light-blue);
+}
 
+body {
+  background: var(--hawkes-light-blue);
 }

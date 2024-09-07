@@ -1,0 +1,29 @@
+.sticker {
+  height: 253px;
+  background-size: 100%;
+  background-image: url("../../../assets/images/StickerBackground.svg");
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 128px;
+  gap: 32px 64px;
+  // TODO: наверное есть смысл закинуть это на ВЕСЬ body
+  color: var(--black);
+
+  &-body {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  &-title {
+    font-size: 18px;
+    color: var(--royal-purple);
+  }
+
+  &-text {
+    font-size: 15px;
+  }
+}

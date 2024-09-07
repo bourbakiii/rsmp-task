@@ -1,0 +1,41 @@
+.header {
+  /* TODO: что это за цвет??? */
+  background-color: rgb(212, 216, 229, 0.25);
+  border-radius: 16px;
+  padding: 34.5px 32px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  color: var(--black);
+  gap: 16px;
+  height: 170px;
+
+  &-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 48px;
+  }
+
+  &-edit-button {
+    width: 24px;
+
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--royal-purple);
+  }
+
+  &-body {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content:  center;
+    gap: 20px;
+  }
+
+  &-block {
+    max-width: 265px;
+  }
+}
