@@ -1,0 +1,19 @@
+@import './../../../assets/styles/font';
+
+.tab {
+  @extend .inter-medium;
+  border-bottom: 2px solid transparent;
+  transition: 0.3s;
+  color: var(--blue-zodiac);
+}
+
+.tab:hover {
+  transition: 0.1s;
+  color: var(--black);
+  border-color: var(--slate-grey);
+}
+
+.tab.selected {
+  color: var(--royal-purple);
+  border-color: var(--royal-purple);
+}

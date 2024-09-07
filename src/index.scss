@@ -1,0 +1,10 @@
+@import './assets/styles/reset.css';
+@import './assets/styles/variables.scss';
+@import './assets/styles/font';
+
+body {
+  @extend .inter-regular;
+  font-size: 15px;
+  background: var(--hawkes-light-blue);
+
+}
