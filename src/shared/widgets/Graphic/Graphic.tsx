@@ -1,26 +1,22 @@
-import React, {FC} from 'react';
+import {FC} from 'react';
 import styles from './Graphic.module.scss'
-import {Area, AreaChart, ResponsiveContainer, Tooltip, XAxis, TooltipProps, XAxisProps} from 'recharts';
+import {Area, AreaChart, ResponsiveContainer, Tooltip, TooltipProps, XAxis} from 'recharts';
 import {generateRandomValuesForRange} from "./helpers/generateDaysArray";
 import {Container} from "../../ui/container/Container";
-import {
-    ValueType,
-    NameType,
-} from 'recharts/types/component/DefaultTooltipContent';
+import {NameType, ValueType,} from 'recharts/types/component/DefaultTooltipContent';
 import {CustomTickProps} from "./types/types";
 import {MonthsPicker} from "./ui/months-picker/MonthsPicker";
 import {PeriodButtons} from "./ui/period-buttons/PeriodButtons";
-import RangeSlider from "../../ui/range-slider/RangeSlider";
+import {LoadingSpinner} from "../../ui/loading-spinner";
 
-const data = generateRandomValuesForRange('2024-06-01', '2024-08-31');
+export type IGraphicPair = { name: string, value: number };
 
-// TODO: красить цифру при наведении + пунктирная полоска
-// TODO: убрать tickSize
-export const Graphic = () => {
-    const onRangeChange = (start: number, end: number) => {
-        console.log('start', start);
-        console.log('end', end);
-    };
+export interface IGraphicProps {
+    data?: IGraphicPair[]
+    isLoading?: boolean;
+}
+
+export const Graphic: FC<IGraphicProps> = ({data, isLoading}) => {
     return (
         <Container className={styles['graphic']}>
             <h3>График производительности</h3>
@@ -28,27 +24,34 @@ export const Graphic = () => {
                 <PeriodButtons/>
                 <MonthsPicker fromMonth={'Июнь'} toMonth={'Август'} toYear={2024}/>
             </div>
-            <div className={styles['graphic-body']} style={{width: '100%', overflowY: 'hidden'}}>
-                <ResponsiveContainer width={data.length * 29.4} height={150}>
-                    <AreaChart data={data}>
-                        <Tooltip content={<CustomTooltip/>}
+            <div className={styles['graphic-body']}
+            >
+                {data && !isLoading &&
+                    <ResponsiveContainer width={data.length * 29.5} height={150}>
+                        <AreaChart data={data}>
+                            <Tooltip content={<CustomTooltip/>}
+                                     cursor={{strokeDasharray: "5 5"}}/>
+                            <Area type="monotone" dataKey="value"
+                                  fill="var(--magnolia)" stroke="var(--royal-purple)" strokeWidth={2}/>
+                            <XAxis
+                                interval={0}
+                                fontSize={100}
+                                axisLine={false}
+                                tickSize={0}
+                                tickMargin={8} dataKey="name" tick={(props) => renderCustomAxisTick(props, data)}/>
+                        </AreaChart>
+                    </ResponsiveContainer>
+                }
+                {isLoading && <LoadingSpinner className={styles['loading']}/>}
 
-                                 cursor={{strokeDasharray: "5 5"}}/>
-                        <Area type="monotone" dataKey="value"
-                              fill="var(--magnolia)" stroke="var(--royal-purple)" strokeWidth={2}/>
-                        <XAxis
-                            fontSize={100}
-                            tickSize={0}
-                            tickMargin={8} dataKey="name" tick={renderCustomAxisTick}/>
-                    </AreaChart>
-                </ResponsiveContainer>
-                <RangeSlider onChange={onRangeChange}/>
             </div>
+
+
         </Container>
     );
 };
 
-const renderCustomAxisTick = (props: CustomTickProps): JSX.Element => {
+const renderCustomAxisTick = (props: CustomTickProps, data: IGraphicPair[]): JSX.Element => {
     const {x, y, payload, index} = props;
     const isFirst = index === 0;
     const isLast = index === data.length - 1;
@@ -60,8 +63,7 @@ const renderCustomAxisTick = (props: CustomTickProps): JSX.Element => {
             y={+y + 10}
             fontSize={10}
             textAnchor={isFirst ? 'start' : isLast ? 'end' : 'middle'}
-            // TODO: Change color
-            style={{fill: 'var(--royal-purple)'}}
+            style={{fill: 'var(--royal-purple)', opacity: 0.5, fontSize: 14}}
         >
             {payload.value.substring(0, 2)}
         </text>

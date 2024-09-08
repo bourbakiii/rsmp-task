@@ -6,12 +6,12 @@ import {ITab, Tabs} from "./shared/ui/tabs";
 import {InfoBlock} from "./shared/ui/info-block";
 import {LoadedVideoIcon} from "./shared/icons/LoadedVideoIcon";
 import {MarkedVideoIcon} from "./shared/icons/MarkedVideoIcon";
-import {Graphic} from "./shared/widgets/Graphic/Graphic";
+import {Graphic, IGraphicPair} from "./shared/widgets/Graphic/Graphic";
 import {Header} from "./shared/widgets/Header/Header";
 import {Container} from "./shared/ui/container/Container";
 import {Recommendations} from "./shared/widgets/Recomendations/Recommendations";
 import {Navigation} from "./shared/widgets/Navigation/Navigation";
-import RangeSlider from "./shared/ui/range-slider/RangeSlider";
+import useFetch from "./shared/hooks/useFetch";
 
 const __mock__tabs: ITab[] = [{
     id: 'monitoring',
@@ -27,31 +27,33 @@ const __mock__tabs: ITab[] = [{
     }, {
         id: 'video-markup',
         name: "Разметка видео"
-    }]
+    }];
+
+export interface IInfoBlockResponse {
+    loadedFiles: number,
+    markedFiles: number
+}
 
 function App() {
+    const {data: infoBlocks__mock__, isLoading: isInfoBlocksLoading} = useFetch<IInfoBlockResponse>('/info-blocks');
+    const {data: graphics__mock__, isLoading: isGraphinsLoading} = useFetch<IGraphicPair[]>('/graphics-data');
     return (
         <div className="App">
             <div style={{margin: '16px'}}>
                 <Navigation/>
             </div>
-            <RangeSlider />
             <div style={{maxWidth: 960, display: 'flex', flexDirection: "column", gap: 32, margin: '0 auto'}}>
                 <Header/>
                 <Tabs tabs={__mock__tabs}/>
-                {/*TODO: replace arrow function with useCallbacked*/}
                 <div style={{display: 'flex', gap: 32, width: 'auto'}}>
-                    <InfoBlock icon={<LoadedVideoIcon/>} text="Загружено файлов" afterText="1456"/>
-                    <InfoBlock icon={<MarkedVideoIcon/>} text="Размечено файлов" afterText="123"/>
+                    <InfoBlock isLoading={isInfoBlocksLoading} icon={<LoadedVideoIcon/>} text="Загружено файлов"
+                               value={infoBlocks__mock__?.loadedFiles}/>
+                    <InfoBlock isLoading={isInfoBlocksLoading} icon={<MarkedVideoIcon/>} text="Размечено файлов"
+                               value={infoBlocks__mock__?.markedFiles}/>
                 </div>
-                <Graphic/>
+                <Graphic data={graphics__mock__ || []} isLoading={isGraphinsLoading}/>
                 <Recommendations/>
             </div>
-            <hr/>
-            <br/>
-            Ui kit
-            <LoadingSpinner/>
-            <Button>Войти</Button>
         </div>
     );
 }

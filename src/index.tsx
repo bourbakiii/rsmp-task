@@ -3,13 +3,16 @@ import ReactDOM from 'react-dom/client';
 import './index.scss';
 import App from './App';
 
-const root = ReactDOM.createRoot(
-    document.getElementById('root') as HTMLElement
-);
+async function enableMocking() {
+    const {worker} = await import('./mocks/browser');
+    return worker.start();
+}
 
 
-root.render(
-    <React.StrictMode>
-        <App/>
-    </React.StrictMode>
-);
+enableMocking().then(() => {
+    ReactDOM.createRoot(document.getElementById('root')!).render(
+        <React.StrictMode>
+            <App/>
+        </React.StrictMode>
+    )
+});

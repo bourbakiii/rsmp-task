@@ -13,7 +13,12 @@
 }
 
 .graphic-body {
+  position: relative;
   background: var(--white);
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  height: 150px;
 
   &::-webkit-scrollbar {
     height: 6px;
@@ -69,3 +74,9 @@
 }
 
 
+.loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

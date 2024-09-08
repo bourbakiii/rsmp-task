@@ -11,6 +11,7 @@ export interface ILoadingSpinnerProps extends SVGProps<SVGSVGElement> {
 export const LoadingSpinner: FC<ILoadingSpinnerProps> = ({size = 24, ...restProps}) => {
     return (
         <LoadingSpinnerIcon width={size}
-                            className={classNames(animations['full-rotate'], styles['loading-spinner'])}/>
+                            {...restProps}
+                            className={classNames(animations['full-rotate'], styles['loading-spinner'], restProps?.className)}/>
     );
 };

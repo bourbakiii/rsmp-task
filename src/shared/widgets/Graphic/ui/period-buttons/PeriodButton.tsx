@@ -1,7 +1,6 @@
 import {FC, DetailedHTMLProps, ButtonHTMLAttributes} from 'react';
 import styles from './PeriodButton.module.scss';
 import {classNames} from "../../../../helpers/classNamesParser";
-import {ChevronIcon} from "../../../../icons/ChevronIcon";
 import {SmallChevronIcon} from "../../../../icons/SmallChevronIcon";
 
 export interface IPeriodButtonProps extends DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
