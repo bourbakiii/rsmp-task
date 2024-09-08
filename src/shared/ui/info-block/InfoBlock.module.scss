@@ -9,6 +9,13 @@
   padding: 24px 16px 24px 32px;
   gap: 24px;
   width: 464px;
+  transition: 0.3s;
+  &:hover{
+    box-shadow: 0 0 10px 1px rgba(0,0,0,.1);
+    transition: 0.1s;
+    //transform: scale(1.02);
+  }
+
   &-icon-wrapper {
     width: 64px;
     aspect-ratio: 1/1;
@@ -41,6 +48,12 @@
   }
 
   &-chevron-button{
+    color: var(--royal-purple);
+    transition: 0.3s;
     width: 48px;
+  }
+  &:hover &-chevron-button{
+    transition: 0.1s;
+    transform: scale(1.01) translateX(10px);
   }
 }

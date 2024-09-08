@@ -1,4 +1,18 @@
-.graphic-block {
+@import 'src/assets/styles/font';
+
+.graphic {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.graphic-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.graphic-body {
   background: var(--white);
 
   &::-webkit-scrollbar {
@@ -16,11 +30,12 @@
     background: var(--royal-purple);
     border-radius: 10px;
     cursor: pointer;
-    &::after{
-      content:'text';
+
+    &::after {
+      content: 'text';
       position: absolute;
-      top:0;
-      left:0;
+      top: 0;
+      left: 0;
     }
   }
 
@@ -42,6 +57,15 @@
   background: var(--royal-purple);
   padding: 8px 12px;
   border-radius: 6px;
+
+  &-label {
+    font-size: 12px;
+  }
+
+  &-value {
+    @extend .inter-medium;
+    font-size: 15px;
+  }
 }
 
 

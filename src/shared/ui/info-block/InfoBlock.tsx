@@ -6,12 +6,12 @@ export interface IInfoBlockProps {
     icon: ReactNode;
     text: string;
     afterText: string;
-    onClick: () => void;
+    onClick?: () => void;
 }
 
-export const InfoBlock: FC<IInfoBlockProps> = ({icon, text, afterText}) => {
+export const InfoBlock: FC<IInfoBlockProps> = ({icon, text, afterText, onClick}) => {
     return (
-        <button className={styles['info-block']}>
+        <button className={styles['info-block']} onClick={onClick}>
             <div className={styles['info-block-icon-wrapper']}>
                 {icon}
             </div>

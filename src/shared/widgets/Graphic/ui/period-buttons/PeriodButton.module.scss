@@ -1,0 +1,22 @@
+.period-button {
+  height: 28px;
+  padding: 4px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--royal-purple);
+  border-radius: 6px;
+  transition: 0.3s;
+  gap: 4px;
+  &:hover, &.selected {
+    transition: 0.05s;
+    background: var(--magnolia) !important;
+  }
+  &.selected{
+    cursor: default;
+  }
+  &.with-chevron{
+    padding: 0 16px;
+  }
+}
+

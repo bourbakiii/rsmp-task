@@ -21,6 +21,18 @@
     gap: 8px;
     color: var(--royal-purple);
     margin-right: auto;
+    text-decoration: none;
+    transition: 0.3s;
+
+    &:hover {
+      transition: 0.1s;
+      transform: scale(1.02);
+    }
+
+    &:active {
+      transition: 0.05s;
+      transform: scale(0.9);
+    }
   }
 
   &-account {

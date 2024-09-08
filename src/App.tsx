@@ -34,28 +34,22 @@ function App() {
             <div style={{margin: '16px'}}>
                 <Navigation/>
             </div>
-            <div style={{maxWidth: 960, display: 'flex', flexDirection: "column", gap: 32}}>
-                Header:
+            <div style={{maxWidth: 960, display: 'flex', flexDirection: "column", gap: 32, margin: '0 auto'}}>
                 <Header/>
-                Loading spinner:
-                <LoadingSpinner/>
-                Primary button (not completed, because unused):
-                <Button>Войти</Button>
-                Tabs:
                 <Tabs tabs={__mock__tabs}/>
-                Info blocks:
                 {/*TODO: replace arrow function with useCallbacked*/}
                 <div style={{display: 'flex', gap: 32, width: 'auto'}}>
-                    <InfoBlock icon={<LoadedVideoIcon/>} text="Загружено файлов" afterText="1456"
-                               onClick={() => console.log("Info block 1 clicked")}/>
-                    <InfoBlock icon={<MarkedVideoIcon/>} text="Размечено файлов" afterText="123"
-                               onClick={() => console.log("Info block 2 clicked")}/>
+                    <InfoBlock icon={<LoadedVideoIcon/>} text="Загружено файлов" afterText="1456"/>
+                    <InfoBlock icon={<MarkedVideoIcon/>} text="Размечено файлов" afterText="123"/>
                 </div>
-                Curved-line chart:
                 <Graphic/>
-                Recommendations:
                 <Recommendations/>
             </div>
+            <hr/>
+            <br/>
+            Ui kit
+            <LoadingSpinner/>
+            <Button>Войти</Button>
         </div>
     );
 }

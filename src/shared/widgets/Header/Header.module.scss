@@ -26,12 +26,22 @@
     align-items: center;
     justify-content: center;
     color: var(--royal-purple);
+    transition: 0.3s;
+
+    &:hover {
+      transition: 0.1s;
+      transform: scale(1.1);
+    }
+
+    &:active {
+      transform: scale(0.9);
+    }
   }
 
   &-body {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    justify-content:  center;
+    justify-content: center;
     gap: 20px;
   }
 
