@@ -10,12 +10,17 @@ import {
 import {CustomTickProps} from "./types/types";
 import {MonthsPicker} from "./ui/months-picker/MonthsPicker";
 import {PeriodButtons} from "./ui/period-buttons/PeriodButtons";
+import RangeSlider from "../../ui/range-slider/RangeSlider";
 
 const data = generateRandomValuesForRange('2024-06-01', '2024-08-31');
 
 // TODO: красить цифру при наведении + пунктирная полоска
 // TODO: убрать tickSize
 export const Graphic = () => {
+    const onRangeChange = (start: number, end: number) => {
+        console.log('start', start);
+        console.log('end', end);
+    };
     return (
         <Container className={styles['graphic']}>
             <h3>График производительности</h3>
@@ -23,7 +28,7 @@ export const Graphic = () => {
                 <PeriodButtons/>
                 <MonthsPicker fromMonth={'Июнь'} toMonth={'Август'} toYear={2024}/>
             </div>
-            <div className={styles['graphic-body']} style={{width: '100%', overflowX: 'auto', overflowY: 'hidden'}}>
+            <div className={styles['graphic-body']} style={{width: '100%', overflowY: 'hidden'}}>
                 <ResponsiveContainer width={data.length * 29.4} height={150}>
                     <AreaChart data={data}>
                         <Tooltip content={<CustomTooltip/>}
@@ -32,13 +37,12 @@ export const Graphic = () => {
                         <Area type="monotone" dataKey="value"
                               fill="var(--magnolia)" stroke="var(--royal-purple)" strokeWidth={2}/>
                         <XAxis
-                            minTickGap={2000}
-                            interval={0}
                             fontSize={100}
                             tickSize={0}
                             tickMargin={8} dataKey="name" tick={renderCustomAxisTick}/>
                     </AreaChart>
                 </ResponsiveContainer>
+                <RangeSlider onChange={onRangeChange}/>
             </div>
         </Container>
     );

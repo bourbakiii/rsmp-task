@@ -11,6 +11,7 @@ import {Header} from "./shared/widgets/Header/Header";
 import {Container} from "./shared/ui/container/Container";
 import {Recommendations} from "./shared/widgets/Recomendations/Recommendations";
 import {Navigation} from "./shared/widgets/Navigation/Navigation";
+import RangeSlider from "./shared/ui/range-slider/RangeSlider";
 
 const __mock__tabs: ITab[] = [{
     id: 'monitoring',
@@ -34,6 +35,7 @@ function App() {
             <div style={{margin: '16px'}}>
                 <Navigation/>
             </div>
+            <RangeSlider />
             <div style={{maxWidth: 960, display: 'flex', flexDirection: "column", gap: 32, margin: '0 auto'}}>
                 <Header/>
                 <Tabs tabs={__mock__tabs}/>
