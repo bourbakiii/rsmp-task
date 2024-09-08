@@ -1,7 +1,6 @@
 import {FC} from 'react';
 import styles from './Graphic.module.scss'
 import {Area, AreaChart, ResponsiveContainer, Tooltip, TooltipProps, XAxis} from 'recharts';
-import {generateRandomValuesForRange} from "./helpers/generateDaysArray";
 import {Container} from "../../ui/container/Container";
 import {NameType, ValueType,} from 'recharts/types/component/DefaultTooltipContent';
 import {CustomTickProps} from "./types/types";
@@ -43,10 +42,7 @@ export const Graphic: FC<IGraphicProps> = ({data, isLoading}) => {
                     </ResponsiveContainer>
                 }
                 {isLoading && <LoadingSpinner className={styles['loading']}/>}
-
             </div>
-
-
         </Container>
     );
 };
@@ -71,7 +67,6 @@ const renderCustomAxisTick = (props: CustomTickProps, data: IGraphicPair[]): JSX
 };
 
 const CustomTooltip: FC<TooltipProps<ValueType, NameType>> = ({active, payload, label}) => {
-    console.log(payload);
     if (active && payload && payload.length) {
         return (
             <div className={styles['custom-tooltip']}>

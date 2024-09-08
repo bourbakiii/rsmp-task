@@ -4,8 +4,6 @@ export interface IButtonProps extends DetailedHTMLProps<ButtonHTMLAttributes<HTM
 
 }
 
-// TODO: не понятно что делать с кнопкой. В самом макете она не используется, но используется в UI-kit
-// TODO: привести к FSD (index.ts)
 const Button: FC<IButtonProps> = ({children, ...restProps}) => {
     return (
         <button className={styles['button']} {...restProps}>

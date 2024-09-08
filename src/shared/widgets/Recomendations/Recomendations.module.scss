@@ -1,7 +1,16 @@
-.recommendations{
+@import "src/assets/styles/mixins";
+
+.recommendations {
   display: flex;
   flex-direction: column;
   align-items: stretch;
   justify-content: flex-start;
   gap: 24px;
+
+  @include respond-to(md) {
+    gap: 16px;
+  }
+  @include respond-to(sm) {
+    gap: 12px;
+  }
 }

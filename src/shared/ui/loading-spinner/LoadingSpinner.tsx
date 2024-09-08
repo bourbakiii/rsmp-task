@@ -1,7 +1,7 @@
 import {FC, SVGProps} from 'react';
 import {LoadingSpinnerIcon} from "../../icons/LoadingSpinnerIcon";
 import animations from '../../../assets/styles/animation.module.css';
-import styles from './LoadingSpinner.module.css';
+import styles from './LoadingSpinner.module.scss';
 import {classNames} from "../../helpers/classNamesParser";
 
 export interface ILoadingSpinnerProps extends SVGProps<SVGSVGElement> {

@@ -1,3 +1,5 @@
+@import "src/assets/styles/mixins";
+
 .navigation {
   width: 100%;
   border-radius: 12px;
@@ -6,17 +8,39 @@
   align-items: center;
   height: 96px;
   padding: 0 32px;
+  @include respond-to(lg) {
+    padding: 0 24px;
+    height: 80px;
+  }
+
+  @include respond-to(md) {
+    padding: 0 16px;
+    height: 70px;
+  }
+
+  @include respond-to(sm) {
+    height: 60px;
+  }
 
   &-logotype {
     height: 28px;
     margin-right: 80px;
+    @include respond-to(lg) {
+      margin-right: 50px;
+    }
+    @include respond-to(md) {
+      margin-right: 32px;
+    }
+    @include respond-to(sm) {
+      margin-right: 10px;
+    }
   }
 
-  // TODO: Возможно эту кнопку нужно взять из UI-Kit
   &-projects-button {
+    flex-shrink: 0;
     display: flex;
     align-items: center;
-    font-size: 15px;
+    font-size: 1rem;
     padding: 0 16px;
     gap: 8px;
     color: var(--royal-purple);
@@ -40,10 +64,14 @@
     align-items: center;
     justify-content: flex-end;
     gap: 13px;
+    flex-shrink: 0;
 
     &-name {
-      font-size: 15px;
+      font-size: 1rem;
       color: var(--royal-purple);
+      @include respond-to(sm) {
+        display: none;
+      }
     }
 
     &-image {

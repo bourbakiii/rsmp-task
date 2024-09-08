@@ -2,6 +2,7 @@ import {FC, ReactNode} from 'react';
 import styles from './InfoBlock.module.scss';
 import {ChevronIcon} from "../../icons/ChevronIcon";
 import {LoadingSpinner} from "../loading-spinner";
+import {classNames} from "../../helpers/classNamesParser";
 
 export interface IInfoBlockProps {
     icon: ReactNode;
@@ -9,11 +10,12 @@ export interface IInfoBlockProps {
     value?: number;
     isLoading?: boolean;
     onClick?: () => void;
+    className?: string;
 }
 
-export const InfoBlock: FC<IInfoBlockProps> = ({icon, text, isLoading = false, value, onClick}) => {
+export const InfoBlock: FC<IInfoBlockProps> = ({icon, text, isLoading = false, value, onClick, className = ""}) => {
     return (
-        <button className={styles['info-block']} onClick={onClick}>
+        <button className={classNames(styles['info-block'], className)} onClick={onClick}>
             <div className={styles['info-block-icon-wrapper']}>
                 {icon}
             </div>

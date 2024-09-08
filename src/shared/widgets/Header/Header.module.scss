@@ -1,5 +1,6 @@
+@import 'src/assets/styles/mixins';
+
 .header {
-  /* TODO: что это за цвет??? */
   background-color: rgb(212, 216, 229, 0.25);
   border-radius: 16px;
   padding: 34.5px 32px 32px;
@@ -11,11 +12,30 @@
   gap: 16px;
   height: 170px;
 
+  @include respond-to(xl) {
+    padding: 32px;
+    height: auto
+  }
+  @include respond-to(lg) {
+    padding: 24px
+  }
+  @include respond-to(md) {
+    padding: 18px
+  }
+  @include respond-to(sm) {
+    padding: 16px;
+  }
+
+
   &-head {
     display: flex;
     align-items: center;
     justify-content: space-between;
     height: 48px;
+
+    @include respond-to(xl) {
+      height: auto;
+    }
   }
 
   &-edit-button {
@@ -43,6 +63,11 @@
     grid-template-columns: repeat(3, 1fr);
     justify-content: center;
     gap: 20px;
+
+    @include respond-to(sm) {
+      grid-template-columns: repeat(1, 1fr);
+      gap: 15px;
+    }
   }
 
   &-block {

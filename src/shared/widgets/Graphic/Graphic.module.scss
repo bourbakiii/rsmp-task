@@ -1,15 +1,27 @@
-@import 'src/assets/styles/font';
+@import '../../../assets/styles/font';
+@import '../../../assets/styles/mixins';
 
 .graphic {
   display: flex;
   flex-direction: column;
   gap: 24px;
+  @include respond-to(md){
+    gap: 16px;
+  }
+  @include respond-to(sm){
+    gap: 12px;
+  }
 }
 
 .graphic-head {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  @include respond-to(sm){
+    align-items: center;
+    gap: 10px;
+    flex-direction: column;
+  }
 }
 
 .graphic-body {
@@ -24,12 +36,10 @@
     height: 6px;
   }
 
-  /* Track */
   &::-webkit-scrollbar-track {
     background: var(--magnolia);
   }
 
-  /* Handle */
   &::-webkit-scrollbar-thumb {
     position: relative;
     background: var(--royal-purple);
@@ -49,7 +59,6 @@
   }
 }
 
-
 .custom-tooltip-wrapper {
   position: absolute;
   bottom: 0;
@@ -64,15 +73,14 @@
   border-radius: 6px;
 
   &-label {
-    font-size: 12px;
+    font-size: pxToRem(12, 15);
   }
 
   &-value {
     @extend .inter-medium;
-    font-size: 15px;
+    font-size: 1rem;
   }
 }
-
 
 .loading {
   position: absolute;

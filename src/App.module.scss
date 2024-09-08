@@ -1,0 +1,22 @@
+@import "src/assets/styles/mixins";
+
+.App {
+  margin: 16px;
+  display: flex;
+  align-items: stretch;
+  flex-direction: column;
+  gap: 48px;
+
+  @include respond-to(lg) {
+    gap: 32px;
+    margin: 14px;
+  }
+  @include respond-to(md) {
+    gap: 24px;
+    margin: 12px;
+  }
+  @include respond-to(sm) {
+    gap: 16px;
+    margin: 10px;
+  }
+}

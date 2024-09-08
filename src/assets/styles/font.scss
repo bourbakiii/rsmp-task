@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
-
+@import "functions";
 .inter-light {
   font-family: "Inter", system-ui;
   font-optical-sizing: auto;
@@ -55,14 +55,13 @@ h1, h2, h3 {
 }
 
 h1 {
-  font-size: 31px;
+  font-size: pxToRem(31, 15);
 }
 
 h2 {
-  font-size: 26px;
+  font-size: pxToRem(26, 15);
 }
 
 h3 {
-  font-size: 22px;
+  font-size: pxToRem(22, 15);
 }
-

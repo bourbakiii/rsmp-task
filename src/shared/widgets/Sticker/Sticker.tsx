@@ -13,7 +13,7 @@ export const Sticker: FC<IStickerProps> = () => {
                 <p className={styles['sticker-text']}>Этот процесс может занять значительное время. Можете проверить
                     результат позже или дождаться приглашения на почту</p>
             </div>
-            <img src="./WorkerTransparent.png" alt="Worker"/>
+            <img className={styles['sticker-image']} src="./WorkerTransparent.png" alt="Worker"/>
         </div>
     );
 };

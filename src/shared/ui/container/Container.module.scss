@@ -1,5 +1,21 @@
-.container{
+@import 'src/assets/styles/mixins';
+
+.container {
   padding: 32px 24px 24px;
   background: var(--white);
   border-radius: 16px;
+
+  @include respond-to(xl) {
+    padding: 24px;
+  }
+  @include respond-to(lg) {
+    padding: 18px;
+  }
+  @include respond-to(md) {
+    padding: 16px;
+  }
+  @include respond-to(sm) {
+    padding: 12px;
+  }
+
 }
